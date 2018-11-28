@@ -17,9 +17,35 @@ const trailIndicators = {
     down: setBright('↓')
 };
 
-
+//Here we test
 function turn(robot, step, turns) {
+    console.log(step);
+    console.log(robot.head);
     turns += 1;
+    //
+    switch (step.trim()) {
+        case 'right':
+            switch (robot.head){
+                case 'up': robot.head='right';break;
+                case 'right': robot.head='down'; break;
+                case 'down': robot.head='left';break;
+                case 'left': robot.head='up'; break;
+        }
+        console.log('Im inside the case' + robot.head);
+        break;
+        case 'turn-left':
+            switch (robot.head) {
+                case 'left': robot.head='down'; break;
+                case 'down': robot.head='right'; break;
+                case 'right': robot.head='up'; break;
+                case 'up': robot.head='left'; break;
+            }
+            console.log('im inside the case left');
+            break;
+
+
+    }
+    console.log(robot.head);
     return turns;
 }
 
