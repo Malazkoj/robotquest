@@ -17,6 +17,24 @@ const trailIndicators = {
     down: setBright('↓')
 };
 
+//Here we try to print the board including the robot
+function printCurrentPosition(robot, maxLineIndex, maxColumnIndex) {
+
+    for (let i = 0; i < maxLineIndex; i++) {
+        for (let j = 0; j < maxColumnIndex; j++) {
+            if (i === robot.position.line && j === robot.position.column) {
+                console.log(SYMBOLS.robot);
+            }
+            else if (i === maxLineIndex && j == maxColumnIndex) {
+                console.log(SYMBOLS.flag);
+            }
+            else {
+                console.log('--');
+            }
+        }
+    }
+}
+
 //Here we test
 function turn(robot, step, turns) {
     console.log(step);
@@ -25,20 +43,36 @@ function turn(robot, step, turns) {
     //
     switch (step.trim()) {
         case 'right':
-            switch (robot.head){
-                case 'up': robot.head='right';break;
-                case 'right': robot.head='down'; break;
-                case 'down': robot.head='left';break;
-                case 'left': robot.head='up'; break;
-        }
-        console.log('Im inside the case' + robot.head);
-        break;
+            switch (robot.head) {
+                case 'up':
+                    robot.head = 'right';
+                    break;
+                case 'right':
+                    robot.head = 'down';
+                    break;
+                case 'down':
+                    robot.head = 'left';
+                    break;
+                case 'left':
+                    robot.head = 'up';
+                    break;
+            }
+            console.log('Im inside the case' + robot.head);
+            break;
         case 'turn-left':
             switch (robot.head) {
-                case 'left': robot.head='down'; break;
-                case 'down': robot.head='right'; break;
-                case 'right': robot.head='up'; break;
-                case 'up': robot.head='left'; break;
+                case 'left':
+                    robot.head = 'down';
+                    break;
+                case 'down':
+                    robot.head = 'right';
+                    break;
+                case 'right':
+                    robot.head = 'up';
+                    break;
+                case 'up':
+                    robot.head = 'left';
+                    break;
             }
             console.log('im inside the case left');
             break;
@@ -50,6 +84,30 @@ function turn(robot, step, turns) {
 }
 
 function move(robot, maxLineIndex, maxColumnIndex, nbOfMoves) {
+    printCurrentPosition(robot,maxLineIndex,maxColumnIndex);
+    switch (robot.head) {
+        case 'up':
+            if (robot.position.line < maxLineIndex)
+                robot.position.line = robot.position.line + 1;
+            else return nbOfMoves;
+            break;
+        case 'down':
+            if (robot.position.line > 0)
+                robot.position.line = robot.position.line - 1;
+            else return nbOfMoves;
+            break;
+        case 'right':
+            if (robot.position.column < maxColumnIndex)
+                robot.position.column = robot.position.column + 1;
+            else return nbOfMoves;
+            break;
+        case 'left':
+            if (robot.position.line > 0)
+                robot.position.column = robot.position.column - 1;
+            else return nbOfMoves;
+            break;
+    }
+
     nbOfMoves += 1;
     return nbOfMoves;
 }

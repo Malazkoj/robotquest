@@ -136,6 +136,61 @@ test('robot should move 1 step up when head is up', () => {
     expect(robot.position.line).toBe(3);
 });
 
+test('robot should move 1 step up when head is down', () => {
+    let maxLineIndex = 3; // 4 lines
+    let maxColumnIndex = 3; // 4 columns
+    let nbOfMoveAlreadyDone = 5;
+    let robot = {
+        position: {
+            line: 2,
+            column: 2
+        },
+        head: 'down'
+    };
+
+    let nbOfMove = featuresToTest.move(robot, maxLineIndex, maxColumnIndex, nbOfMoveAlreadyDone);
+    expect(nbOfMove).toBe(6);
+    expect(robot.position.column).toBe(2);
+    expect(robot.position.line).toBe(1);
+});
+
+test('robot should move 1 step up when head is right', () => {
+    let maxLineIndex = 3; // 4 lines
+    let maxColumnIndex = 3; // 4 columns
+    let nbOfMoveAlreadyDone = 5;
+    let robot = {
+        position: {
+            line: 2,
+            column: 2
+        },
+        head: 'right'
+    };
+
+    let nbOfMove = featuresToTest.move(robot, maxLineIndex, maxColumnIndex, nbOfMoveAlreadyDone);
+    expect(nbOfMove).toBe(6);
+    expect(robot.position.column).toBe(3);
+    expect(robot.position.line).toBe(2);
+});
+
+test('robot should move 1 step up when head is left', () => {
+    let maxLineIndex = 3; // 4 lines
+    let maxColumnIndex = 3; // 4 columns
+    let nbOfMoveAlreadyDone = 5;
+    let robot = {
+        position: {
+            line: 2,
+            column: 2
+        },
+        head: 'left'
+    };
+
+    let nbOfMove = featuresToTest.move(robot, maxLineIndex, maxColumnIndex, nbOfMoveAlreadyDone);
+    expect(nbOfMove).toBe(6);
+    expect(robot.position.column).toBe(1);
+    expect(robot.position.line).toBe(2);
+});
+
+
 // TODO: write some more tests on move()
 
 test('robot reaches the flag when its position meets `F` on the board', () => {
