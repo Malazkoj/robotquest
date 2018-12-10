@@ -1,5 +1,5 @@
 module.exports =
-    {turn, move, updateBoard, checkIfFlagReached, cloneRobot};
+    {turn, move, updateBoard, checkIfFlagReached, cloneRobot, turnBasedOnKeyInput};
 
 const SYMBOLS = {
     robot: setReverse('R'),
@@ -37,6 +37,17 @@ function turn(robot, step, turns) {
 
     turns += 1;
     return turns;
+}
+
+function turnBasedOnKeyInput(robot,keyCode, turns){
+   switch (keyCode) {
+       case 37: return turn(robot,'turn-left',turns);
+
+       case 39: return turn(robot,'turn-left',turns);
+       
+
+   }
+    return turn(robot,'right',turns);
 }
 
 function move(robot, maxLineIndex, maxColumnIndex, nbOfMoves) {

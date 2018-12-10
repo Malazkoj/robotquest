@@ -106,3 +106,14 @@ test("Given a Robot with head in position 'left'. \n" +
     expect(robot.head).toBe('down');
 });
 
+/*
+//right key - keycode 39
+test("Given a Robot with head in position 'up'. \n" +
+    "When user presses the right arrow(keycode=39)\n" +
+    "Then the head of the robot is in position 'right'.", () => {
+    robot.head = 'up';
+    let numOfTurns = featuresToTest.turnBasedOnKeyInput(robot, 39, 2);
+    expect(numOfTurns).toBe(3);
+    expect(robot.head).toBe('right');
+});
+*/

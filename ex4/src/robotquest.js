@@ -33,7 +33,8 @@ let turns = 0;
 const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout,
-    prompt: '\n???> ' // OBS: '\n' means 'new line'
+    prompt: '\n???> ', // OBS: '\n' means 'new line'
+    prompt: '\nRobotquest (press h for help)> ' // OBS: '\n' means 'new line'
 });
 
 
@@ -53,6 +54,17 @@ function main() {
         let previousRobotState = features.cloneRobot(currentRobot);
 
         switch (inputFromUser.trim()) {
+            case 'h':
+                console.log("'r' to turn-right, 'l' to turn-left, 'm' to move, ctrl+c to exit");
+                break;
+            case 'r':
+                step= 'turn-right';
+                console.log('turn-right');
+                break;
+            case 'l':
+                step= 'turn-left';
+                console.log('turn-left');
+                break;
             case 'm':
                 step = 'move';
                 console.log('move');

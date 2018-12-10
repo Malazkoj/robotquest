@@ -13,6 +13,7 @@
     "npm": "^6.4.1"
   },
   "devDependencies": {
-    "jest": "^23.6.0"
+    "jest": "^23.6.0",
+    "keypress": "0.2.1"
   }
 }

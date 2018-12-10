@@ -15,7 +15,7 @@ const PLAY_BOARD = [
     [R,   '.',  '.',   W]
 ];
 
-const STEPS_TO_FLAG = ['move', 'turn-right', 'move', 'move', 'move', 'turn-left', 'move', 'move'];
+//const STEPS_TO_FLAG = ['move', 'turn-right', 'move', 'move', 'move', 'turn-left', 'move', 'move'];
 
 
 let ROBOT_START_STATE = {
@@ -39,18 +39,23 @@ function main() {
     let isFlagReached = false;
     renderBoard(board, isFlagReached);
 
-    for (let index in STEPS_TO_FLAG) {
-        let step = STEPS_TO_FLAG[index];
-        let previousRobotState = features.cloneRobot(currentRobot);
+    //for (let index in STEPS_TO_FLAG) {
+        //let step = STEPS_TO_FLAG[index];
+        let step = pressedKommand();
+        console.log(step);
+        //console.log(step.toString());
+        //while (step.toString()!== 'exit') {
+            let previousRobotState = features.cloneRobot(currentRobot);
 
-        let hasMoved = applyStep(currentRobot, step, maxLineIndex, maxColumnIndex);
-        isFlagReached = features.checkIfFlagReached(currentRobot, board);
-        features.updateBoard(board, previousRobotState, currentRobot);
+            let hasMoved = applyStep(currentRobot, step, maxLineIndex, maxColumnIndex);
+            isFlagReached = features.checkIfFlagReached(currentRobot, board);
+            features.updateBoard(board, previousRobotState, currentRobot);
 
-        if (hasMoved) {
-            renderBoard(board, isFlagReached);
-        }
-    }
+            if (hasMoved) {
+                renderBoard(board, isFlagReached);
+            }
+        //}
+    //}
 }
 
 
@@ -93,6 +98,26 @@ function sleep(delay) {
     while (new Date().getTime() < start + delay) { /* Do nothing while waiting */}
 }
 
+function pressedKommand() {
+
+
+    var readline = require('readline');
+    var log = console.log;
+
+    var rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout
+    });
+    /*rl.question('Command: ', function (answer) {
+        //  if (answer == 'exit') //we need some base case, for recursion
+        //closing RL and returning from function.
+        log('Got it! Your answer was: "', answer, '"');
+        //rl.close();
+
+        return answer;
+    });*/
+    rl.question('Command: ');
+}
 
 /*
   Main method
