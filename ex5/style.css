@@ -1,17 +1,45 @@
 body {
     background-color: #1d4877;
 }
+/*
 table, th, td {
     border: 1px solid black;
     padding: 5px;
     background-color: whitesmoke;
 }
+*/
+
+table {
+    border: 5px solid black;
+    border-collapse: collapse;
+    background-color: white;
+}
+
+td {
+    border: 1px solid black;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+}
 .tree {
     color: forestgreen;
+    background-color: lawngreen;
 }
 .water {
     color: royalblue;
+    background-color: blue;
 }
 .flag {
     color: red;
+}
+td {
+    width:50px;
+    height: 50px;
+    margin: 10px;
+}
+button {
+    background-color: royalblue;
+    cursor: pointer;
+    transform: scale(1,2);
+    margin: 10px;
 }

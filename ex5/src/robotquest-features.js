@@ -45,10 +45,10 @@ function move(robot, maxLineIndex, maxColumnIndex, nbOfMoves) {
 
     switch (robot.head) {
         case 'up':
-            line = Math.min(maxLineIndex, line + 1);
+            line = Math.min(maxLineIndex, line - 1);
             break;
         case 'down':
-            line = Math.max(0, line - 1);
+            line = Math.max(0, line + 1);
             break;
         case 'left':
             column = Math.max(0, column - 1);
