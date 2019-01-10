@@ -45,10 +45,10 @@ function move(robot, maxLineIndex, maxColumnIndex, nbOfMoves) {
 
     switch (robot.head) {
         case 'up':
-            line = Math.min(maxLineIndex, line - 1);
+            line = Math.max(0, line - 1);
             break;
         case 'down':
-            line = Math.max(0, line + 1);
+            line = Math.min(maxLineIndex, line + 1);
             break;
         case 'left':
             column = Math.max(0, column - 1);
@@ -56,8 +56,20 @@ function move(robot, maxLineIndex, maxColumnIndex, nbOfMoves) {
         case 'right':
             column = Math.min(maxColumnIndex, column + 1);
             break;
-    }
+    }//console.log("before if column"+ column+" line is "+line);
+    if ((line < 0 || column < 0 || line > 3 || column > 3)) {
 
+        alert("You are going outside the boundaries, Try another move!! ");
+        return 0;
+    }
+    if ((line === 0 && column === 0) || (line === 0 && column === 1) || (line === 1 && column === 0)) {
+        alert("You are going into trees, Try another move!! ");
+        return 0;
+    }
+    if (line === 3 && column === 3) {
+        alert("You are going into water, Try another move!! ");
+        return 0;
+    }
     robot.position.line = line;
     robot.position.column = column;
 
